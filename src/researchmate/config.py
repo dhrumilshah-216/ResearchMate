@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 class Settings:
     gemini_api_key: str
     gemini_model: str
+    tavily_api_key: str | None
 
 
 def get_settings() -> Settings:
@@ -24,5 +25,6 @@ def get_settings() -> Settings:
 
     return Settings(
         gemini_api_key=api_key,
-        gemini_model=model
+        gemini_model=model,
+        tavily_api_key=os.getenv("TAVILY_API_KEY")
     )
