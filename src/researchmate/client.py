@@ -4,11 +4,9 @@ from tavily import TavilyClient
 
 def create_gemini_client():
     settings = get_settings()
-
     client = genai.Client(
         api_key=settings.gemini_api_key
     )
-
     return client
 
 def create_tavily_client():
