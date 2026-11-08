@@ -67,3 +67,21 @@ class ResearchSource(BaseModel):
 class SearchResponse(BaseModel):
     query: str
     sources: list[ResearchSource]
+
+class SearchWebArgs(BaseModel):
+    query: str = Field(
+        min_length=3,
+        max_length=400
+    )
+    max_results: int = Field(
+        default=5,
+        ge=1,
+        le=10
+    )
+    include_domains: list[str] | None = None
+
+class ResearchResult(BaseModel):
+    research_question: str
+    summary: str
+    sources: list[ResearchSource]
+    total_searches: int = Field(ge=0)
